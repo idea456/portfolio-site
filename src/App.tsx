@@ -1,4 +1,3 @@
-import * as three from "three";
 import { Suspense, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";

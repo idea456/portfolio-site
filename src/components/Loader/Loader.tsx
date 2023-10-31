@@ -1,7 +1,7 @@
-import React, { FC } from "react";
+import React from "react";
 import "./Loader.scss";
 
-const Loader: FC = () => {
+const Loader: React.FC = () => {
     return (
         <div className='loader'>
             <h1>Loading...</h1>
