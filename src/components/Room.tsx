@@ -3,7 +3,7 @@
 */
 
 import useSpline from "@splinetool/r3f-spline";
-import { PerspectiveCamera } from "@react-three/drei";
+import { OrthographicCamera, PerspectiveCamera } from "@react-three/drei";
 
 export default function Scene({ ...props }) {
     const { nodes, materials } = useSpline(
@@ -26,38 +26,6 @@ export default function Scene({ ...props }) {
                         rotation={[-2.43, -0.6, -2.69]}
                         scale={1}
                     />
-                    <group name='Group 3' position={[-226.84, 139.67, 246.11]}>
-                        <mesh
-                            name='Plane 2'
-                            geometry={nodes["Plane 2"].geometry}
-                            material={materials["Plane 2 Material"]}
-                            castShadow
-                            receiveShadow
-                            position={[-12.27, -0.17, -9.61]}
-                            rotation={[-Math.PI, 0, -Math.PI]}
-                            scale={1}
-                        />
-                        <mesh
-                            name='Plane'
-                            geometry={nodes.Plane.geometry}
-                            material={materials["Plane Material"]}
-                            castShadow
-                            receiveShadow
-                            position={[36.78, 0.73, -9.61]}
-                            rotation={[-Math.PI, 0, -Math.PI]}
-                            scale={1}
-                        />
-                        <mesh
-                            name='Cube 12'
-                            geometry={nodes["Cube 12"].geometry}
-                            material={materials["Cube 12 Material"]}
-                            castShadow
-                            receiveShadow
-                            position={[0, 0, 0.26]}
-                            rotation={[-Math.PI, 0, Math.PI]}
-                            scale={[1.24, 0.56, 0.19]}
-                        />
-                    </group>
                     <group
                         name='Handle'
                         position={[-110, 184.01, 273.28]}
@@ -73,8 +41,8 @@ export default function Scene({ ...props }) {
                             rotation={[-Math.PI / 2, 0, 0]}
                         />
                         <mesh
-                            name='Cube 121'
-                            geometry={nodes["Cube 121"].geometry}
+                            name='Cube 12'
+                            geometry={nodes["Cube 12"].geometry}
                             material={materials.Floor}
                             castShadow
                             receiveShadow
@@ -115,7 +83,6 @@ export default function Scene({ ...props }) {
                             scale={[0.62, 0.82, 1.21]}
                         />
                     </group>
-                    {/* <ambientLight castShadow intensity={2} /> */}
                     <directionalLight
                         name='Directional Light'
                         castShadow
@@ -137,9 +104,9 @@ export default function Scene({ ...props }) {
                         scale={[1.05, 1.16, 1]}
                     >
                         <mesh
-                            name='Plane1'
-                            geometry={nodes.Plane1.geometry}
-                            material={materials["Plane1 Material"]}
+                            name='Plane'
+                            geometry={nodes.Plane.geometry}
+                            material={materials["Plane Material"]}
                             castShadow
                             receiveShadow
                             position={[2.38, 0.07, 6.08]}
@@ -758,18 +725,18 @@ export default function Scene({ ...props }) {
                         scale={[0.15, 0.13, 0.15]}
                     >
                         <mesh
-                            name='Plane 21'
-                            geometry={nodes["Plane 21"].geometry}
-                            material={materials["Plane 21 Material"]}
+                            name='Plane 2'
+                            geometry={nodes["Plane 2"].geometry}
+                            material={materials["Plane 2 Material"]}
                             castShadow
                             receiveShadow
                             position={[-73.13, -3.79, 2.77]}
                             rotation={[0, -Math.PI / 2, 0]}
                         />
                         <mesh
-                            name='Cube 122'
-                            geometry={nodes["Cube 122"].geometry}
-                            material={materials["Cube 122 Material"]}
+                            name='Cube 121'
+                            geometry={nodes["Cube 121"].geometry}
+                            material={materials["Cube 121 Material"]}
                             castShadow
                             receiveShadow
                             position={[-67.21, 3.84, 5.49]}
@@ -1273,8 +1240,8 @@ export default function Scene({ ...props }) {
                             scale={[0.98, 1.12, 1]}
                         />
                         <mesh
-                            name='Cube 123'
-                            geometry={nodes["Cube 123"].geometry}
+                            name='Cube 122'
+                            geometry={nodes["Cube 122"].geometry}
                             material={materials.Wood}
                             castShadow
                             receiveShadow
@@ -1313,8 +1280,8 @@ export default function Scene({ ...props }) {
                             scale={[0.28, 0.51, 0.33]}
                         />
                         <mesh
-                            name='Cube 124'
-                            geometry={nodes["Cube 124"].geometry}
+                            name='Cube 123'
+                            geometry={nodes["Cube 123"].geometry}
                             material={materials.Wood}
                             castShadow
                             receiveShadow
@@ -1409,8 +1376,8 @@ export default function Scene({ ...props }) {
                             rotation={[0, -Math.PI / 2, 0]}
                         />
                         <mesh
-                            name='Plane 22'
-                            geometry={nodes["Plane 22"].geometry}
+                            name='Plane 21'
+                            geometry={nodes["Plane 21"].geometry}
                             material={materials.Floor}
                             castShadow
                             receiveShadow
@@ -1659,9 +1626,9 @@ export default function Scene({ ...props }) {
                                 scale={[2.46, 0.65, 0.32]}
                             />
                             <mesh
-                                name='Plane 23'
-                                geometry={nodes["Plane 23"].geometry}
-                                material={materials["Plane 23 Material"]}
+                                name='Plane 22'
+                                geometry={nodes["Plane 22"].geometry}
+                                material={materials["Plane 22 Material"]}
                                 castShadow
                                 receiveShadow
                                 position={[-3.57, 2.34, -0.26]}
@@ -1790,7 +1757,6 @@ export default function Scene({ ...props }) {
                             scale={1}
                         />
                     </group>
-
                     <hemisphereLight
                         name='Default Ambient Light'
                         intensity={0.75}

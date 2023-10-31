@@ -1,57 +1,59 @@
 import * as three from "three";
-import { Suspense, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Scene from "./components/Room";
+import { Typewriter } from "./components/Typewriter";
+import { Loader } from "./components/Loader";
 
 export default function App() {
     const scroll = useRef(0);
 
+    useEffect(() => {
+        window.addEventListener("keydown", (e) => {
+            if (e.keyCode == 32 && e.target == document.body) {
+                e.preventDefault();
+            }
+        });
+    }, []);
+
     return (
-        <div
-            style={{
-                height: "100vh",
-                width: "100vw",
-            }}
-        >
-            <h1
+        <Suspense fallback={<Loader />}>
+            <div
                 style={{
-                    position: "absolute",
-                    bottom: 90,
-                    left: 50,
-                    zIndex: 9999,
-                    color: "#FF8E3C",
-                    fontSize: 60,
-                    width: 100,
+                    height: "100vh",
+                    width: "100vw",
                 }}
             >
-                Frontend developer,
-            </h1>
-            <h1
-                style={{
-                    position: "absolute",
-                    bottom: 10,
-                    left: 50,
-                    zIndex: 9999,
-                    color: "white",
-                    fontSize: 60,
-                }}
-            >
-                Adrienne Rio
-            </h1>
-            <Canvas shadows flat linear>
-                <Suspense fallback={null}>
+                <div
+                    style={{
+                        position: "absolute",
+                        bottom: 40,
+                        left: 50,
+                        zIndex: 9999,
+                        display: "block",
+                    }}
+                >
+                    <Typewriter>
+                        <span style={{ color: "#FF8E3C" }}>
+                            Frontend developer,
+                        </span>{" "}
+                        Adrienne Rio
+                    </Typewriter>
+                </div>
+
+                <Canvas shadows flat linear>
                     <Scene scroll={scroll} />
-                </Suspense>
-                <OrbitControls
-                    minPolarAngle={0}
-                    maxPolarAngle={1}
-                    minAzimuthAngle={Math.PI}
-                    maxAzimuthAngle={Math.PI * 1.55}
-                    minDistance={200}
-                    maxDistance={1000}
-                />
-            </Canvas>
-        </div>
+                    <OrbitControls
+                        minPolarAngle={0}
+                        maxPolarAngle={1}
+                        minAzimuthAngle={Math.PI}
+                        maxAzimuthAngle={Math.PI * 1.55}
+                        minDistance={200}
+                        maxDistance={1000}
+                    />
+                </Canvas>
+            </div>
+        </Suspense>
     );
 }
