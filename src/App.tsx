@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import {
     OrbitControls,
@@ -12,11 +12,12 @@ import { Loader } from "./components/Loader";
 import gsap from "gsap";
 import { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 import * as THREE from "three";
+import Scene from "./components/Room/Scene";
 
 export default function App() {
-    const orbitRef = useRef<OrbitControlsImpl | null>(null);
-    const [isCameraEnabled, setIsCameraEnabled] = useState(true);
     const tlRef = useRef<GSAPTimeline | null>(null);
+    const mainRef = useRef();
+    const monitorRef = React.useRef(null);
 
     useEffect(() => {
         window.addEventListener("keydown", (e) => {
@@ -24,30 +25,21 @@ export default function App() {
                 e.preventDefault();
             }
         });
-
-        tlRef.current = gsap.timeline({});
-
-        // if (orbitRef?.current?.rotation) {
-        //     tlRef.current.to(orbitRef?.current.rotation, {
-        //         y: -90.2,
-        //         duration: 4,
-        //         onComplete: () => {
-        //             // orbitRef?.current?.enabled = false;
-        //         },
-        //     });
-        // }
+        window.addEventListener("wheel", () => {
+            console.log("wheeling");
+        });
     }, []);
 
     return (
         <Suspense fallback={<Loader />}>
             <div
                 style={{
-                    height: "100.1vh",
+                    height: "100vh",
                     width: "100vw",
+                    overflow: "hidden",
                 }}
-                onScroll={() => console.log("lmao")}
             >
-                <div
+                {/* <div
                     style={{
                         position: "absolute",
                         bottom: 40,
@@ -57,7 +49,7 @@ export default function App() {
                     }}
                 >
                     <Typewriter>Frontend developer, Adrienne Rio</Typewriter>
-                </div>
+                </div> */}
 
                 <Canvas
                     shadows
@@ -66,9 +58,7 @@ export default function App() {
                     camera={{
                         near: 1,
                         far: 10000,
-                        position: [-1000, 200, 0],
-                        // position: [-100, 100, 100],
-                        // rotation: [0, Math.PI + 0.7, 0],
+                        position: [-1000, 300, 0],
                         scale: 1,
                         fov: 50,
                     }}
@@ -78,30 +68,16 @@ export default function App() {
                 >
                     <color attach='background' args={["#f5eedf"]} />
                     <PresentationControls
-                        snap
-                        global
-                        zoom={0.7}
-                        rotation={[0, Math.PI + 0.7, 0]}
+                        config={{ mass: 2, tension: 500 }}
+                        snap={{ mass: 2, tension: 300 }}
+                        zoom={0.8}
+                        rotation={[0, Math.PI, 0]}
                         polar={[0, 0]}
-                        azimuth={[Math.PI, Math.PI * 1.65]}
+                        // azimuth={[-0.2, 0.2]}
+                        azimuth={[-0.8, 0.8]}
                     >
-                        <Room />
-                        {/* <OrbitControls
-                        enableDamping
-                        dampingFactor={0.1}
-                        minPolarAngle={0}
-                        maxPolarAngle={1.5}
-                        minAzimuthAngle={Math.PI}
-                        maxAzimuthAngle={Math.PI * 1.65}
-                        minDistance={0}
-                        maxDistance={1000}
-                        target={[0, 125, -50]}
-                        ref={orbitRef}
-                        makeDefault
-                    /> */}
+                        <Room />;
                     </PresentationControls>
-                    <axesHelper args={[200]} />
-                    {/* </Bounds> */}
                 </Canvas>
             </div>
         </Suspense>

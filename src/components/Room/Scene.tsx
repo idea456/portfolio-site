@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useImperativeHandle, useRef } from "react";
 import useSpline from "@splinetool/r3f-spline";
 import { Html, useBounds } from "@react-three/drei";
 
@@ -6,10 +6,26 @@ const Scene = React.forwardRef((props, ref) => {
     const { nodes, materials } = useSpline(
         "https://prod.spline.design/CxxKW4WaE4Skxb1b/scene.splinecode",
     );
+    const monitorRef = useRef(null);
+    const roomRef = useRef(null);
+
+    useImperativeHandle(ref, () => ({
+        get monitor() {
+            return monitorRef.current;
+        },
+        get room() {
+            return roomRef.current;
+        },
+    }));
     return (
         <>
             <color attach='background' args={["#fefaed"]} />
-            <group {...props} dispose={null}>
+            <group
+                {...props}
+                dispose={null}
+                rotation={[0, Math.PI + 0.8, 0]}
+                ref={roomRef}
+            >
                 <scene name='Scene 1'>
                     <group
                         name='Lamp'
@@ -1729,7 +1745,7 @@ const Scene = React.forwardRef((props, ref) => {
                                     position={[5, -55.43, 2.5]}
                                     rotation={[Math.PI / 2, 0, -Math.PI / 2]}
                                     scale={[2.46, 0.65, 0.32]}
-                                    ref={ref}
+                                    ref={monitorRef}
                                 />
                                 <mesh
                                     name='Plane 21'
@@ -1750,7 +1766,7 @@ const Scene = React.forwardRef((props, ref) => {
                                             style={{
                                                 // width: "100vw",
                                                 height: "100vh",
-                                                background: "red",
+                                                background: "white",
                                                 display: "grid",
                                                 placeItems: "center",
                                                 cursor: "default",
