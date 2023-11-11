@@ -39,7 +39,7 @@ export default function App() {
                     overflow: "hidden",
                 }}
             >
-                {/* <div
+                <div
                     style={{
                         position: "absolute",
                         bottom: 40,
@@ -48,8 +48,27 @@ export default function App() {
                         display: "block",
                     }}
                 >
-                    <Typewriter>Frontend developer, Adrienne Rio</Typewriter>
-                </div> */}
+                    <h1
+                        style={{
+                            color: "#faac05",
+                            fontSize: 70,
+                            margin: 0,
+                        }}
+                    >
+                        Adrienne Rio
+                    </h1>
+                    <h1
+                        style={{
+                            // color: "#ff8e3c",
+                            color: "white",
+                            fontSize: 40,
+                            margin: 0,
+                            // width: 400,
+                        }}
+                    >
+                        Frontend developer
+                    </h1>
+                </div>
 
                 <Canvas
                     shadows
@@ -73,7 +92,6 @@ export default function App() {
                         zoom={0.8}
                         rotation={[0, Math.PI, 0]}
                         polar={[0, 0]}
-                        // azimuth={[-0.2, 0.2]}
                         azimuth={[-0.8, 0.8]}
                     >
                         <Room />;

@@ -25,6 +25,7 @@ const Scene = React.forwardRef((props, ref) => {
                 dispose={null}
                 rotation={[0, Math.PI + 0.8, 0]}
                 ref={roomRef}
+                position={[0, 0, 100]}
             >
                 <scene name='Scene 1'>
                     <group
@@ -66,7 +67,7 @@ const Scene = React.forwardRef((props, ref) => {
                     <directionalLight
                         name='Directional Light'
                         castShadow
-                        intensity={2.05}
+                        intensity={2.45}
                         shadow-mapSize-width={1024}
                         shadow-mapSize-height={1024}
                         shadow-camera-near={-10000}

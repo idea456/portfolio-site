@@ -1,36 +1,35 @@
 .typewriter {
     display: inline-block;
-    width: 400px;
     height: fit-content;
 
-    &__text {
-        color: #0000;
-        cursor: default;
-        font-size: 60px;
-        letter-spacing: 0.1px;
-        background: linear-gradient(-90deg, #ff8e3c 5px, #0000 0) 10px 0,
-            linear-gradient(#ff8e3c 0 0) 0 0;
-        background-size: calc(32 * 1ch) 200%;
-        -webkit-background-clip: padding-box, text;
-        background-clip: padding-box, text;
-        background-repeat: no-repeat;
-        animation: b 0.7s infinite steps(1),
-            t calc(32 * 0.1s) steps(32) forwards;
-    }
-
     // &__text {
-    //     display: inline-block;
+    //     color: #0000;
     //     cursor: default;
     //     font-size: 60px;
     //     letter-spacing: 0.1px;
-    //     width: 100%;
-    //     padding-right: 10px;
-    //     overflow: hidden;
-    //     // border-right: 8px solid;
-    //     white-space: wrap;
-    //     // animation: cursor 0.5s step-end infinite alternate;
-    //     color: white;
+    //     background: linear-gradient(-90deg, #ff8e3c 5px, #0000 0) 10px 0,
+    //         linear-gradient(#ff8e3c 0 0) 0 0;
+    //     background-size: calc(32 * 1ch) 200%;
+    //     -webkit-background-clip: padding-box, text;
+    //     background-clip: padding-box, text;
+    //     background-repeat: no-repeat;
+    //     animation: b 0.7s infinite steps(1),
+    //         t calc(32 * 0.1s) steps(32) forwards;
     // }
+
+    &__text {
+        display: inline-block;
+        cursor: default;
+        font-size: 60px;
+        letter-spacing: 0.1px;
+        width: 100%;
+        padding-right: 10px;
+        overflow: hidden;
+        // border-right: 8px solid;
+        white-space: wrap;
+        // animation: cursor 0.5s step-end infinite alternate;
+        color: white;
+    }
 }
 
 @keyframes t {

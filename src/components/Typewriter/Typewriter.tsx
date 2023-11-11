@@ -24,7 +24,6 @@ import styled, { keyframes } from "styled-components";
 
 const TypewriterWrapper = styled.div`
     display: inline-block;
-    width: 400px;
     height: fit-content;
 `;
 
