@@ -7,9 +7,15 @@ const pageVariant = {
     },
     open: {
         opacity: 1,
+        transition: {
+            duration: 0,
+        },
     },
     exit: {
         opacity: 0,
+        transition: {
+            duration: 0,
+        },
     },
 };
 

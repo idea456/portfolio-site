@@ -66,7 +66,7 @@ const PixelTransition = ({ show }: PropsWithChildren<PixelTransitionProps>) => {
                     variants={pixelVariant}
                     initial='initial'
                     animate={show ? "open" : "closed"}
-                    custom={randomI}
+                    custom={i + randomI}
                 />
             );
         });

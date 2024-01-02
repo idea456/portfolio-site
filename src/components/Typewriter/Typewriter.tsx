@@ -32,7 +32,7 @@ function Typewriter({ words }: TypewriterProps) {
                     charRef.style.background = "inherit";
                     charRef.style.color = "white";
                     clearTimeout(timeout);
-                }, 1800);
+                }, 1000);
                 charRefs.current[i] = charRef;
             }
         },

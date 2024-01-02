@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { AboutMePage } from "../AboutMe";
+import { Projects } from "../Projects";
 import "./MainPage.scss";
 import { PixelTransition } from "../../components";
 
@@ -18,18 +19,7 @@ const MainPage = () => {
         <div className='main-page'>
             <PixelTransition show={showAboutMe} />
             <AboutMePage show={showAboutMe} />
-            <div
-                style={{
-                    display: "flex",
-                    height: "100%",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    fontSize: 200,
-                    background: "red",
-                }}
-            >
-                Projects
-            </div>
+            <Projects />
         </div>
     );
 };
