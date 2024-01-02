@@ -1,0 +1,24 @@
+$text-sizes: (
+  "sm": 60px,
+  "md": 80px,
+  "lg": 180px,
+);
+
+$text-weight: (
+  "bold": 600,
+  "normal": 400,
+);
+
+.text {
+  @each $size, $value in $text-sizes {
+    &__size--#{$size} {
+      font-size: $value;
+    }
+  }
+
+  @each $weight, $value in $text-weight {
+    &__weight--#{$weight} {
+      font-weight: $value;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.pixels {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+
+    .column {
+        width: 5%;
+        height: 100%;
+
+        .pixel {
+            height: 10%;
+            width: 100%;
+            background-color: black;
+        }
+    }
+}

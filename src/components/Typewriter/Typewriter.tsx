@@ -1,54 +1,66 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
-// import "./Typwriter.scss";
+import { useCallback, useRef } from "react";
+import "./Typwriter.scss";
 
-// .typewriter {
-//     display: inline-block;
-//     width: 400px;
-//     height: fit-content;
+const letters = "abcdefghijklmnopqrstuvwxyz0123456789#$_+=";
 
-//     &__text {
-//         color: #0000;
-//         cursor: default;
-//         font-size: 60px;
-//         letter-spacing: 0.1px;
-//         background: linear-gradient(-90deg, white 5px, #0000 0) 10px 0,
-//             linear-gradient(white 0 0) 0 0;
-//         background-size: calc(32 * 1ch) 200%;
-//         -webkit-background-clip: padding-box, text;
-//         background-clip: padding-box, text;
-//         background-repeat: no-repeat;
-//         animation: b 0.7s infinite steps(1),
-//             t calc(32 * 0.1s) steps(32) forwards;
-//     }
-
-const TypewriterWrapper = styled.div`
-    display: inline-block;
-    height: fit-content;
-`;
-
-const TypewriterText = styled.span`
-    color: #0000;
-    cursor: default;
-    font-size: 60px;
-    letter-spacing: 0.1px;
-    background: linear-gradient(-90deg, #ff8e3c 5px, #0000 0) 10px 0,
-        linear-gradient(#ff8e3c 0 0) 0 0;
-    background-size: calc(32 * 1ch) 200%;
-    -webkit-background-clip: padding-box, text;
-    background-clip: padding-box, text;
-    background-repeat: no-repeat;
-    animation: b 0.7s infinite steps(1), t calc(32 * 0.1s) steps(32) forwards;
-`;
-
-const Typewriter: React.FC<React.PropsWithChildren<unknown>> = ({
-    children,
-}) => {
-    return (
-        <TypewriterWrapper>
-            <TypewriterText>{children}</TypewriterText>
-        </TypewriterWrapper>
-    );
+type TypewriterProps = {
+    words: string;
 };
+
+function Typewriter({ words }: TypewriterProps) {
+    const charRefs = useRef<HTMLSpanElement[]>([]);
+
+    const onMouseEnter = useCallback(
+        (c: string, i: number) => {
+            const charRef = charRefs.current[i];
+            if (!charRef.interval && c !== " ") {
+                const interval = setInterval(() => {
+                    const randomIndex = Math.floor(
+                        Math.random() * (letters.length - 1),
+                    );
+
+                    charRef.innerText = letters[randomIndex];
+                    charRef.style.background = "white";
+                    charRef.style.color = "black";
+                }, 100);
+                charRef.interval = interval;
+
+                const timeout = setTimeout(() => {
+                    clearInterval(interval);
+                    delete charRef.interval;
+                    charRef.innerText = words[i];
+                    charRef.style.background = "inherit";
+                    charRef.style.color = "white";
+                    clearTimeout(timeout);
+                }, 1800);
+                charRefs.current[i] = charRef;
+            }
+        },
+        [words],
+    );
+
+    return (
+        <div>
+            <span className='typo'>
+                <span>{"> "}</span>
+                {words.split("").map((c, i) => {
+                    return (
+                        <span
+                            onMouseEnter={() => {
+                                onMouseEnter(c, i);
+                            }}
+                            ref={(r) => {
+                                if (r) charRefs.current.push(r);
+                            }}
+                            key={`${c}-${i}`}
+                        >
+                            {c}
+                        </span>
+                    );
+                })}
+            </span>
+        </div>
+    );
+}
 
 export default Typewriter;
