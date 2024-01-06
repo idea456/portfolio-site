@@ -10,6 +10,7 @@ const Room = () => {
     const { camera } = useThree();
 
     const transitionCameraToWorkspace = () => {
+        // @ts-expect-error Monitor is not initialized
         const monitorPosition = monitorRef.current?.monitor.position;
 
         if (tlRef?.current) {

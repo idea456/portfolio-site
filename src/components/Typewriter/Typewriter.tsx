@@ -9,11 +9,14 @@ type TypewriterProps = {
 
 function Typewriter({ words }: TypewriterProps) {
     const charRefs = useRef<HTMLSpanElement[]>([]);
+    const charIntervals = useRef<number[]>(
+        [...Array(words.length)].map(() => -1),
+    );
 
     const onMouseEnter = useCallback(
         (c: string, i: number) => {
             const charRef = charRefs.current[i];
-            if (!charRef.interval && c !== " ") {
+            if (!charIntervals.current[i] !== -1 && c !== " ") {
                 const interval = setInterval(() => {
                     const randomIndex = Math.floor(
                         Math.random() * (letters.length - 1),
@@ -23,11 +26,11 @@ function Typewriter({ words }: TypewriterProps) {
                     charRef.style.background = "white";
                     charRef.style.color = "black";
                 }, 100);
-                charRef.interval = interval;
+                charIntervals.current[i] = interval;
 
                 const timeout = setTimeout(() => {
                     clearInterval(interval);
-                    delete charRef.interval;
+                    charIntervals.current[i] = -1;
                     charRef.innerText = words[i];
                     charRef.style.background = "inherit";
                     charRef.style.color = "white";
@@ -52,7 +55,7 @@ function Typewriter({ words }: TypewriterProps) {
                             ref={(r) => {
                                 if (r) charRefs.current.push(r);
                             }}
-                            key={`${c}-${i}`}
+                            // key={`${c}-${i}`}
                         >
                             {c}
                         </span>
