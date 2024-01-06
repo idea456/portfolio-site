@@ -21,4 +21,17 @@
             margin: 0;
         }
     }
+
+    .links {
+        position: absolute;
+        top: 40px;
+        right: 50px;
+        z-index: 9999;
+        display: flex;
+        gap: 20px;
+
+        svg {
+            cursor: pointer;
+        }
+    }
 }

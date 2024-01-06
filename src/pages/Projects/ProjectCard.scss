@@ -1,0 +1,12 @@
+.project-card {
+    display: flex;
+    flex-direction: column;
+
+    img {
+        border-radius: 100px;
+        width: 100%;
+        background-size: cover;
+        margin-bottom: 20px;
+        cursor: pointer;
+    }
+}

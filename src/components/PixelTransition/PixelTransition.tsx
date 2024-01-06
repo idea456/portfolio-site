@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { PropsWithChildren } from "react";
 import { motion } from "framer-motion";
 import "./PixelTransition.scss";
+import clsx from "clsx";
 
 const COLUMNS = 20;
 
@@ -73,9 +75,13 @@ const PixelTransition = ({ show }: PropsWithChildren<PixelTransitionProps>) => {
     };
 
     return (
-        <div className='pixels'>
+        <div className={clsx("pixels", !show && "pixels--closed")}>
             {[...Array(COLUMNS)].map((_, i) => {
-                return <div className='column'>{getPixels()}</div>;
+                return (
+                    <div key={`column-${i}`} className='column'>
+                        {getPixels()}
+                    </div>
+                );
             })}
         </div>
     );

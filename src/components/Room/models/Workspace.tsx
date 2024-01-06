@@ -2,16 +2,24 @@ import React from "react";
 import { useAssets } from "./Scene";
 import { Html } from "@react-three/drei";
 import { MainPage } from "../../../pages";
+import type {
+    Mesh,
+    BufferGeometry,
+    NormalBufferAttributes,
+    Material,
+    Object3DEventMap,
+} from "three";
 
-const Workspace = React.forwardRef((_, ref) => {
-    const htmlRef = React.useRef();
-
-    React.useEffect(() => {
-        if (htmlRef?.current) {
-            console.log("html ref", htmlRef.current.getBoundingClientRect());
-        }
-    });
+const Workspace = React.forwardRef<
+    Mesh<
+        BufferGeometry<NormalBufferAttributes>,
+        Material | Material[],
+        Object3DEventMap
+    >
+>((_, ref) => {
+    const htmlRef = React.useRef<HTMLDivElement>(null);
     const { nodes, materials } = useAssets();
+
     return (
         <group name='Workspace' position={[149.77, -66.47, -2.22]}>
             <group
@@ -98,7 +106,7 @@ const Workspace = React.forwardRef((_, ref) => {
                     position={[-3.57, 2.34, -0.26]}
                     rotation={[0, -Math.PI / 2, 0]}
                 >
-                    <Html transform fullscreen ref={htmlRef}>
+                    <Html transform ref={htmlRef}>
                         <MainPage />
                     </Html>
                 </mesh>

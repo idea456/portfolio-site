@@ -4,6 +4,15 @@
     width: 100%;
     overflow: hidden;
     position: fixed;
+    z-index: 2;
+
+    &--closed {
+        z-index: 0;
+
+        & + .about-me {
+            z-index: 0;
+        }
+    }
 
     .column {
         width: 5%;
