@@ -1,6 +1,13 @@
 .project-card {
     display: flex;
     flex-direction: column;
+    border-radius: 100px;
+    padding: 100px 120px;
+    cursor: pointer;
+
+    &:hover {
+        animation: selected 0.2s ease-in forwards;
+    }
 
     img {
         border-radius: 100px;
@@ -8,5 +15,14 @@
         background-size: cover;
         margin-bottom: 20px;
         cursor: pointer;
+    }
+}
+
+@keyframes selected {
+    from {
+        background-color: white;
+    }
+    to {
+        background-color: #fff0d1;
     }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import gsap from "gsap";
 import Scene from "./models/Scene";
 import { useThree } from "@react-three/fiber";
@@ -11,7 +11,7 @@ const Room = () => {
 
     const transitionCameraToWorkspace = () => {
         // @ts-expect-error Monitor is not initialized
-        const monitorPosition = monitorRef.current?.monitor.position;
+        const monitorPosition = monitorRef.current.monitor.position;
 
         if (tlRef?.current) {
             tlRef?.current
@@ -30,9 +30,6 @@ const Room = () => {
                         z: 0,
                         ease: "power4.out",
                         duration: 2,
-                        onComplete: () => {
-                            camera.updateProjectionMatrix();
-                        },
                     },
                     "-=2",
                 );
@@ -41,6 +38,7 @@ const Room = () => {
 
     const transitionCameraToMainScene = () => {
         if (tlRef?.current) {
+            tlRef?.current.clear();
             tlRef?.current
                 .to(camera.position, {
                     x: -1000,
@@ -57,9 +55,6 @@ const Room = () => {
                         z: -1.5707963267948974,
                         ease: "power4.out",
                         duration: 2,
-                        onComplete: () => {
-                            camera.updateProjectionMatrix();
-                        },
                     },
                     "-=2",
                 );
@@ -70,15 +65,34 @@ const Room = () => {
         tlRef.current = gsap.timeline({});
     }, []);
 
-    useEffect(() => {
-        window.addEventListener(
-            "wheel",
-            _.throttle(transitionCameraToWorkspace, 1000),
-        );
+    const throttledTransitionCameraToWorkspace = _.throttle(
+        transitionCameraToWorkspace,
+        1000,
+        {
+            trailing: false,
+        },
+    );
+    const throttledTransitionCameraToMainScene = _.throttle(
+        transitionCameraToMainScene,
+        1000,
+        {
+            trailing: false,
+        },
+    );
+
+    // const value = {
+    //     transitionCameraToMainScene:,
+    // };
+
+    useLayoutEffect(() => {
+        window.addEventListener("wheel", throttledTransitionCameraToWorkspace);
         window.addEventListener("keydown", (listener) => {
             if (listener.key === "Escape") {
-                transitionCameraToMainScene();
+                throttledTransitionCameraToMainScene();
             }
+        });
+        window.addEventListener("transition-main-scene", () => {
+            transitionCameraToMainScene();
         });
     }, []);
 
