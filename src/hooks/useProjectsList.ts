@@ -3,7 +3,7 @@ import axios from "axios";
 import React from "react";
 
 const SPACE_ID = "8lz29owteu2j";
-const TOKEN = process.env.CONTENTFUL_TOKEN;
+const TOKEN = "uGg9G-GvimmVIc1eA2lroq0B7K0Kfa_N1ShPQFe9d7c";
 
 type ContentfulResponse = {
     items: ContentfulEntry[];
