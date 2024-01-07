@@ -1,6 +1,6 @@
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
 
 const SPACE_ID = import.meta.env.CONTENTFUL_SPACE_ID;
 const TOKEN = import.meta.env.CONTENTFUL_TOKEN;
