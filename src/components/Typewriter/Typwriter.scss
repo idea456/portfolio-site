@@ -1,31 +1,15 @@
-.typewriter {
-    display: inline-block;
-    width: 500px;
-    height: 150px;
-
-    &__text {
-        display: inline-block;
-        cursor: default;
-        // border-right: 8px solid;
-        font-size: 60px;
-        letter-spacing: 0.1px;
-        width: 100%;
-        // white-space: nowrap;
-        padding-right: 10px;
-        overflow: hidden;
-        // animation: cursor 0.5s step-end infinite alternate;
-        color: white;
-    }
+.typo span {
+    font-size: 160px;
+    font-weight: bold;
+    line-height: 5rem;
 }
 
-@keyframes typing {
-    from {
-        width: 0%;
-    }
+.typo span:last-child {
+    animation: caret 0.5s step-end infinite alternate;
 }
 
-@keyframes cursor {
+@keyframes caret {
     50% {
-        border-color: transparent;
+        color: #242424;
     }
 }

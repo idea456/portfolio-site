@@ -1,0 +1,30 @@
+.about-me {
+    padding: 0 30rem;
+    line-height: 13rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    cursor: default;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    &__footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: calc(100% - 5rem);
+        height: 10rem;
+        background: white;
+        display: flex;
+        padding-left: 2%;
+        color: black;
+        font-size: 60px;
+        align-items: center;
+        font-weight: 500;
+    }
+}

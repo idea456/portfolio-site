@@ -1,0 +1,27 @@
+.pixels {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    z-index: 2;
+
+    &--closed {
+        z-index: 0;
+
+        & + .about-me {
+            z-index: 0;
+        }
+    }
+
+    .column {
+        width: 5%;
+        height: 100%;
+
+        .pixel {
+            height: 10%;
+            width: 100%;
+            background-color: black;
+        }
+    }
+}

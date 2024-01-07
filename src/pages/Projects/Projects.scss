@@ -1,0 +1,39 @@
+.projects {
+    height: 100%;
+    padding: 0 15rem;
+    font-size: 100px;
+    z-index: 1;
+    position: relative;
+    overflow-y: hidden;
+
+    h1 {
+        font-family: "Clash Display", sans-serif;
+        font-size: 250px;
+        margin-bottom: 140px;
+    }
+
+    a {
+        font-family: "Clash Display", sans-serif;
+        font-size: 120px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    span {
+        font-family: "Archivo";
+        font-size: 80px;
+        font-weight: 500;
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 150px;
+    }
+}
