@@ -31,7 +31,12 @@ type ContentfulEntry = {
 
 async function fetchProjects() {
     const response = await axios.get(
-        `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/master/entries?access_token=${TOKEN}&content_type=project`,
+        `https://cdn.contentful.com/spaces/${SPACE_ID}/environments/master/entries?content_type=project`,
+        {
+            headers: {
+                Authorization: `Bearer ${TOKEN}`,
+            },
+        },
     );
 
     return response.data as ContentfulResponse;
