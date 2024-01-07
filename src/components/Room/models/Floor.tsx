@@ -1,4 +1,3 @@
-import React from "react";
 import { useAssets } from "./Scene";
 
 const Floor = () => {
