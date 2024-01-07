@@ -16,7 +16,7 @@ function Typewriter({ words }: TypewriterProps) {
     const onMouseEnter = useCallback(
         (c: string, i: number) => {
             const charRef = charRefs.current[i];
-            if (charIntervals.current[i] && c !== " ") {
+            if (charIntervals.current[i] === null && c !== " ") {
                 const interval = setInterval(() => {
                     const randomIndex = Math.floor(
                         Math.random() * (letters.length - 1),

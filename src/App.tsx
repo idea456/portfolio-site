@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { PresentationControls } from "@react-three/drei";
 import { Room } from "./components/Room";
@@ -8,11 +8,19 @@ import GmailIcon from "./assets/gmail.svg?react";
 import "./App.scss";
 
 export default function App() {
+    const [shouldShowScrollHint, setShouldShowScrollHint] = useState(true);
+
     useEffect(() => {
-        window.addEventListener("keydown", (e) => {
-            if (e.keyCode == 32 && e.target == document.body) {
-                e.preventDefault();
+        window.addEventListener("wheel", () => {
+            setShouldShowScrollHint(false);
+        });
+        window.addEventListener("keydown", (listener) => {
+            if (listener.key === "Escape") {
+                setShouldShowScrollHint(true);
             }
+        });
+        window.addEventListener("transition-main-scene", () => {
+            setShouldShowScrollHint(true);
         });
     }, []);
 
@@ -23,6 +31,12 @@ export default function App() {
                     <h1>Adrienne Rio</h1>
                     <h2>Frontend developer</h2>
                 </div>
+
+                {shouldShowScrollHint && (
+                    <div className='app__scroll-indicator'>
+                        <div className='app__scroll-indicator-wheel' />
+                    </div>
+                )}
 
                 <div className='links'>
                     <GmailIcon

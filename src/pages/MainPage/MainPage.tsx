@@ -22,7 +22,7 @@ const MainPage = () => {
             <div className='main-page'>
                 <PixelTransition show={showAboutMe} />
                 <AboutMePage show={showAboutMe} />
-                <Projects />
+                <Projects setShowAboutMe={setShowAboutMe} />
             </div>
         </QueryClientProvider>
     );
