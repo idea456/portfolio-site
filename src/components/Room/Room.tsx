@@ -80,10 +80,6 @@ const Room = () => {
         },
     );
 
-    // const value = {
-    //     transitionCameraToMainScene:,
-    // };
-
     useLayoutEffect(() => {
         window.addEventListener("wheel", throttledTransitionCameraToWorkspace);
         window.addEventListener("keydown", (listener) => {
