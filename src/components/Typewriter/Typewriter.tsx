@@ -9,14 +9,14 @@ type TypewriterProps = {
 
 function Typewriter({ words }: TypewriterProps) {
     const charRefs = useRef<HTMLSpanElement[]>([]);
-    const charIntervals = useRef<number[]>(
-        [...Array(words.length)].map(() => -1),
+    const charIntervals = useRef<(NodeJS.Timeout | null)[]>(
+        [...Array(words.length)].map(() => null),
     );
 
     const onMouseEnter = useCallback(
         (c: string, i: number) => {
             const charRef = charRefs.current[i];
-            if (charIntervals.current[i] !== -1 && c !== " ") {
+            if (charIntervals.current[i] && c !== " ") {
                 const interval = setInterval(() => {
                     const randomIndex = Math.floor(
                         Math.random() * (letters.length - 1),
@@ -30,7 +30,7 @@ function Typewriter({ words }: TypewriterProps) {
 
                 const timeout = setTimeout(() => {
                     clearInterval(interval);
-                    charIntervals.current[i] = -1;
+                    charIntervals.current[i] = null;
                     charRef.innerText = words[i];
                     charRef.style.background = "inherit";
                     charRef.style.color = "white";

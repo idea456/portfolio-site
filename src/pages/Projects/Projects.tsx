@@ -1,14 +1,9 @@
-import { useEffect } from "react";
 import { useProjectsList } from "../../hooks";
 import { ProjectCard, ProjectCardProps } from "./ProjectCard";
 import "./Projects.scss";
 
 const Projects = () => {
     const { data, isLoading } = useProjectsList();
-
-    useEffect(() => {
-        console.log("projects", data);
-    }, [data]);
 
     if (isLoading || !data) {
         return <h1>Loading...</h1>;

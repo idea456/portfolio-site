@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 
-const SPACE_ID = "8lz29owteu2j";
-const TOKEN = "uGg9G-GvimmVIc1eA2lroq0B7K0Kfa_N1ShPQFe9d7c";
+const SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
+const TOKEN = process.env.CONTENTFUL_TOKEN;
 
 type ContentfulResponse = {
     items: ContentfulEntry[];
@@ -46,7 +46,7 @@ export default function useProjectsList() {
     const transformedData = React.useMemo(() => {
         if (!isSuccess) return;
         const { items } = data;
-        console.log("kufufu", items);
+
         return items
             .sort((a) => (a.metadata.tags.length > 0 ? -1 : 1))
             .map((item) => {

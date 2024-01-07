@@ -12,7 +12,6 @@ const MainPage = () => {
     useEffect(() => {
         document.addEventListener("keydown", (event) => {
             if (event.key === "Enter") {
-                console.log("setting show to", !showAboutMe);
                 setShowAboutMe((prevShowAboutMe) => !prevShowAboutMe);
             }
         });
