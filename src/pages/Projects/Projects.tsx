@@ -37,14 +37,12 @@ const Projects = ({ setShowAboutMe }: ProjectsProps) => {
             </div>
             <div className='projects__list'>
                 {data.map((item: ProjectCardProps) => (
-                    <>
-                        <ProjectCard
-                            key={item.title}
-                            title={item.title}
-                            description={item.description}
-                            url={item.url}
-                        />
-                    </>
+                    <ProjectCard
+                        key={item.title}
+                        title={item.title}
+                        description={item.description}
+                        url={item.url}
+                    />
                 ))}
             </div>
         </div>
