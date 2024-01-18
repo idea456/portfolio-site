@@ -90,6 +90,9 @@ const Room = () => {
         window.addEventListener("transition-main-scene", () => {
             transitionCameraToMainScene();
         });
+        window.addEventListener("transition-to-workspace", () => {
+            transitionCameraToWorkspace();
+        });
     }, []);
 
     return <Scene ref={monitorRef} />;

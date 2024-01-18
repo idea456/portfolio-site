@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, useRef } from "react";
+import React, { Suspense, useImperativeHandle, useRef } from "react";
 import useSpline from "@splinetool/r3f-spline";
 import Keyboard from "./Keyboard";
 import Shelves from "./Shelves";
@@ -114,7 +114,7 @@ const Scene = React.forwardRef((props, ref) => {
                             <mesh
                                 name='Cube'
                                 geometry={nodes.Cube.geometry}
-                                material={materials.black}
+                                material={materials["Cube Material"]}
                                 castShadow
                                 receiveShadow
                                 position={[46.2, -124.61, 7.27]}
@@ -124,7 +124,7 @@ const Scene = React.forwardRef((props, ref) => {
                             <mesh
                                 name='Cylinder 21'
                                 geometry={nodes["Cylinder 21"].geometry}
-                                material={materials.black}
+                                material={materials["Cylinder 21 Material"]}
                                 castShadow
                                 receiveShadow
                                 position={[-89.13, -155.17, 5.27]}
@@ -134,7 +134,7 @@ const Scene = React.forwardRef((props, ref) => {
                             <mesh
                                 name='Cylinder1'
                                 geometry={nodes.Cylinder1.geometry}
-                                material={materials.black}
+                                material={materials["Cylinder1 Material"]}
                                 castShadow
                                 receiveShadow
                                 position={[86.56, -127.47, 7.09]}
@@ -154,7 +154,7 @@ const Scene = React.forwardRef((props, ref) => {
                             <mesh
                                 name='d'
                                 geometry={nodes.d.geometry}
-                                material={materials["pink-light"]}
+                                material={materials["d Material"]}
                                 castShadow
                                 receiveShadow
                                 position={[0, 0, 0]}
@@ -164,7 +164,7 @@ const Scene = React.forwardRef((props, ref) => {
                             <mesh
                                 name='Cylinder2'
                                 geometry={nodes.Cylinder2.geometry}
-                                material={materials.black}
+                                material={materials["Cylinder2 Material"]}
                                 castShadow
                                 receiveShadow
                                 position={[0, 0, 0]}
@@ -311,7 +311,16 @@ const Scene = React.forwardRef((props, ref) => {
                                 rotation={[0, -0.02, 0]}
                                 scale={1}
                             />
-
+                            <mesh
+                                name='Wall'
+                                geometry={nodes.Wall.geometry}
+                                material={materials.orange}
+                                castShadow
+                                receiveShadow
+                                position={[135.5, -105.6, -114.31]}
+                                rotation={[0, -0.02, 0]}
+                                scale={1}
+                            />
                             <mesh
                                 name='Cube 5'
                                 geometry={nodes["Cube 5"].geometry}
@@ -394,15 +403,6 @@ const Scene = React.forwardRef((props, ref) => {
                             scale={[0.15, 0.13, 0.15]}
                         >
                             <mesh
-                                name='Plane 2'
-                                geometry={nodes["Plane 2"].geometry}
-                                material={materials["Plane 2 Material"]}
-                                castShadow
-                                receiveShadow
-                                position={[-73.13, -3.79, 2.77]}
-                                rotation={[0, -Math.PI / 2, 0]}
-                            />
-                            <mesh
                                 name='Cube 12'
                                 geometry={nodes["Cube 12"].geometry}
                                 material={materials["Cube 12 Material"]}
@@ -422,9 +422,9 @@ const Scene = React.forwardRef((props, ref) => {
                         </group>
                         <group name='Group' position={[150.3, -32.23, 157.97]}>
                             <mesh
-                                name='Cube 6'
-                                geometry={nodes["Cube 6"].geometry}
-                                material={materials["Cube 6 Material"]}
+                                name='Cube 69'
+                                geometry={nodes["Cube 69"].geometry}
+                                material={materials["Cube 69 Material"]}
                                 castShadow
                                 receiveShadow
                                 position={[0.44, 4.64, 0.64]}
@@ -432,9 +432,9 @@ const Scene = React.forwardRef((props, ref) => {
                                 scale={[0.39, 0.72, 3.62]}
                             />
                             <mesh
-                                name='Cube 51'
-                                geometry={nodes["Cube 51"].geometry}
-                                material={materials["Cube 51 Material"]}
+                                name='Cube 54'
+                                geometry={nodes["Cube 54"].geometry}
+                                material={materials["Cube 54 Material"]}
                                 castShadow
                                 receiveShadow
                                 position={[0, -1.67, 0]}
@@ -463,9 +463,9 @@ const Scene = React.forwardRef((props, ref) => {
                             scale={[0.76, 0.72, 3.81]}
                         />
                         <mesh
-                            name='Cube 8'
-                            geometry={nodes["Cube 8"].geometry}
-                            material={materials["Cube 8 Material"]}
+                            name='Cube 81'
+                            geometry={nodes["Cube 81"].geometry}
+                            material={materials["Cube 81 Material"]}
                             castShadow
                             receiveShadow
                             position={[150.31, -19.36, 206.91]}
@@ -473,54 +473,8 @@ const Scene = React.forwardRef((props, ref) => {
                             scale={[1, 0.72, 3.81]}
                         />
                         <group
-                            name='Succulent1 2'
-                            position={[151.85, 24.77, 155.33]}
-                            scale={[-0.23, 0.23, 0.23]}
-                        >
-                            <mesh
-                                name='Cylinder 32'
-                                geometry={nodes["Cylinder 32"].geometry}
-                                material={materials.Green}
-                                castShadow
-                                receiveShadow
-                                position={[-1.55, 4.13, -43.91]}
-                                rotation={[Math.PI, 0.74, -Math.PI]}
-                                scale={[0.3, 1.72, 0.3]}
-                            />
-                            <mesh
-                                name='Cylinder 23'
-                                geometry={nodes["Cylinder 23"].geometry}
-                                material={materials.Green}
-                                castShadow
-                                receiveShadow
-                                position={[-13.18, 4.06, -32.22]}
-                                rotation={[Math.PI, 0.74, -Math.PI]}
-                                scale={[0.3, 0.69, 0.3]}
-                            />
-                            <mesh
-                                name='Cylinder3'
-                                geometry={nodes.Cylinder3.geometry}
-                                material={materials.Green}
-                                castShadow
-                                receiveShadow
-                                position={[4.12, 12.86, -29.45]}
-                                rotation={[Math.PI, 0, -Math.PI]}
-                                scale={[0.3, 0.69, 0.3]}
-                            />
-                            <mesh
-                                name='Cylinder4'
-                                geometry={nodes.Cylinder4.geometry}
-                                material={materials.Floor}
-                                castShadow
-                                receiveShadow
-                                position={[-2.93, -42.2, -32.94]}
-                                rotation={[0, -Math.PI / 2, 0]}
-                                scale={[0.39, 0.05, 0.39]}
-                            />
-                        </group>
-                        <group
                             name='Succuelent'
-                            position={[153.86, -18.3, 158.67]}
+                            position={[153.86, 21.24, 153.05]}
                         >
                             <group
                                 name='Succulent1 3'
@@ -528,8 +482,8 @@ const Scene = React.forwardRef((props, ref) => {
                                 scale={0.16}
                             >
                                 <mesh
-                                    name='Cube 71'
-                                    geometry={nodes["Cube 71"].geometry}
+                                    name='Cube 75'
+                                    geometry={nodes["Cube 75"].geometry}
                                     material={materials.Green}
                                     castShadow
                                     receiveShadow
@@ -538,8 +492,8 @@ const Scene = React.forwardRef((props, ref) => {
                                     scale={1}
                                 />
                                 <mesh
-                                    name='Cube 61'
-                                    geometry={nodes["Cube 61"].geometry}
+                                    name='Cube 610'
+                                    geometry={nodes["Cube 610"].geometry}
                                     material={materials.Green}
                                     castShadow
                                     receiveShadow
@@ -548,8 +502,8 @@ const Scene = React.forwardRef((props, ref) => {
                                     scale={1}
                                 />
                                 <mesh
-                                    name='Cube 72'
-                                    geometry={nodes["Cube 72"].geometry}
+                                    name='Cube 76'
+                                    geometry={nodes["Cube 76"].geometry}
                                     material={materials.Green}
                                     castShadow
                                     receiveShadow
@@ -558,8 +512,8 @@ const Scene = React.forwardRef((props, ref) => {
                                     scale={1}
                                 />
                                 <mesh
-                                    name='Cube 52'
-                                    geometry={nodes["Cube 52"].geometry}
+                                    name='Cube 55'
+                                    geometry={nodes["Cube 55"].geometry}
                                     material={materials.Green}
                                     castShadow
                                     receiveShadow
@@ -577,8 +531,18 @@ const Scene = React.forwardRef((props, ref) => {
                                 />
                             </group>
                             <mesh
-                                name='Cylinder 24'
-                                geometry={nodes["Cylinder 24"].geometry}
+                                name='Cylinder3'
+                                geometry={nodes.Cylinder3.geometry}
+                                material={materials.Floor}
+                                castShadow
+                                receiveShadow
+                                position={[11.36, -65.85, -113.37]}
+                                rotation={[0, -Math.PI / 2, 0]}
+                                scale={[1, 0.14, 1]}
+                            />
+                            <mesh
+                                name='Cylinder 23'
+                                geometry={nodes["Cylinder 23"].geometry}
                                 material={materials.Floor}
                                 castShadow
                                 receiveShadow
@@ -589,12 +553,12 @@ const Scene = React.forwardRef((props, ref) => {
                         </group>
                         <group
                             name='Succulent1'
-                            position={[166.83, -37.95, 39.65]}
+                            position={[165.06, -37.05, 40.18]}
                             scale={0.16}
                         >
                             <mesh
-                                name='Cube 73'
-                                geometry={nodes["Cube 73"].geometry}
+                                name='Cube 710'
+                                geometry={nodes["Cube 710"].geometry}
                                 material={materials.Green}
                                 castShadow
                                 receiveShadow
@@ -603,8 +567,8 @@ const Scene = React.forwardRef((props, ref) => {
                                 scale={1}
                             />
                             <mesh
-                                name='Cube 62'
-                                geometry={nodes["Cube 62"].geometry}
+                                name='Cube 611'
+                                geometry={nodes["Cube 611"].geometry}
                                 material={materials.Green}
                                 castShadow
                                 receiveShadow
@@ -613,8 +577,8 @@ const Scene = React.forwardRef((props, ref) => {
                                 scale={1}
                             />
                             <mesh
-                                name='Cube 74'
-                                geometry={nodes["Cube 74"].geometry}
+                                name='Cube 711'
+                                geometry={nodes["Cube 711"].geometry}
                                 material={materials.Green}
                                 castShadow
                                 receiveShadow
@@ -623,22 +587,13 @@ const Scene = React.forwardRef((props, ref) => {
                                 scale={1}
                             />
                             <mesh
-                                name='Cube 53'
-                                geometry={nodes["Cube 53"].geometry}
+                                name='Cube 56'
+                                geometry={nodes["Cube 56"].geometry}
                                 material={materials.Green}
                                 castShadow
                                 receiveShadow
                                 position={[-23.45, -11.8, 118.51]}
                                 rotation={[0, 0, -0.33]}
-                            />
-                            <mesh
-                                name='Sphere 2'
-                                geometry={nodes["Sphere 2"].geometry}
-                                material={materials.Wood}
-                                castShadow
-                                receiveShadow
-                                position={[-93.37, 361.17, 674.73]}
-                                rotation={[0, 0, Math.PI]}
                             />
                             <mesh
                                 name='Sphere1'
@@ -651,16 +606,6 @@ const Scene = React.forwardRef((props, ref) => {
                             />
                         </group>
                         <mesh
-                            name='Cube 35'
-                            geometry={nodes["Cube 35"].geometry}
-                            material={materials["Cube 35 Material"]}
-                            castShadow
-                            receiveShadow
-                            position={[184.27, -54.94, 46.29]}
-                            rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
-                            scale={[0.45, 0.49, 1.29]}
-                        />
-                        <mesh
                             name='Cube 2'
                             geometry={nodes["Cube 2"].geometry}
                             material={materials["Cube 2 Material"]}
@@ -670,26 +615,7 @@ const Scene = React.forwardRef((props, ref) => {
                             rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
                             scale={[0.45, 0.49, 1.29]}
                         />
-                        <mesh
-                            name='Cube 36'
-                            geometry={nodes["Cube 36"].geometry}
-                            material={materials["Cube 36 Material"]}
-                            castShadow
-                            receiveShadow
-                            position={[162.78, -54.94, 46.29]}
-                            rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
-                            scale={[0.45, 0.49, 1.29]}
-                        />
-                        <mesh
-                            name='Cube3'
-                            geometry={nodes.Cube3.geometry}
-                            material={materials["Cube3 Material"]}
-                            castShadow
-                            receiveShadow
-                            position={[162.78, -54.94, -46.31]}
-                            rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
-                            scale={[0.45, 0.49, 1.29]}
-                        />
+
                         <group
                             name='Box 2'
                             position={[152.83, -125.31, 194]}
@@ -697,35 +623,8 @@ const Scene = React.forwardRef((props, ref) => {
                             scale={[0.43, 0.38, 0.38]}
                         >
                             <mesh
-                                name='Cube 210'
-                                geometry={nodes["Cube 210"].geometry}
-                                material={materials.Cardboard}
-                                castShadow
-                                receiveShadow
-                                position={[0, 28.27, 0]}
-                                rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
-                                scale={[1.12, 1, 0.29]}
-                            />
-                            <mesh
-                                name='Cube4'
-                                geometry={nodes.Cube4.geometry}
-                                material={materials.Cardboard}
-                                castShadow
-                                receiveShadow
-                                position={[0.77, -4.34, -0.24]}
-                                rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
-                                scale={[1.1, 1, 1]}
-                            />
-                        </group>
-                        <group
-                            name='Box 4'
-                            position={[150.83, -64.54, 194.04]}
-                            rotation={[-Math.PI, 0, -Math.PI]}
-                            scale={[0.3, 0.2, 0.23]}
-                        >
-                            <mesh
-                                name='Cube 211'
-                                geometry={nodes["Cube 211"].geometry}
+                                name='Cube 22'
+                                geometry={nodes["Cube 22"].geometry}
                                 material={materials.Cardboard}
                                 castShadow
                                 receiveShadow
@@ -745,14 +644,14 @@ const Scene = React.forwardRef((props, ref) => {
                             />
                         </group>
                         <group
-                            name='Box 3'
-                            position={[150.83, -82.14, 194.04]}
+                            name='Box 4'
+                            position={[150.83, -64.54, 194.04]}
                             rotation={[-Math.PI, 0, -Math.PI]}
-                            scale={[0.34, 0.26, 0.34]}
+                            scale={[0.3, 0.2, 0.23]}
                         >
                             <mesh
-                                name='Cube 212'
-                                geometry={nodes["Cube 212"].geometry}
+                                name='Cube 23'
+                                geometry={nodes["Cube 23"].geometry}
                                 material={materials.Cardboard}
                                 castShadow
                                 receiveShadow
@@ -772,14 +671,14 @@ const Scene = React.forwardRef((props, ref) => {
                             />
                         </group>
                         <group
-                            name='Box'
-                            position={[150.93, -129.49, 160.47]}
+                            name='Box 3'
+                            position={[150.83, -82.14, 194.04]}
                             rotation={[-Math.PI, 0, -Math.PI]}
                             scale={[0.34, 0.26, 0.34]}
                         >
                             <mesh
-                                name='Cube 213'
-                                geometry={nodes["Cube 213"].geometry}
+                                name='Cube 24'
+                                geometry={nodes["Cube 24"].geometry}
                                 material={materials.Cardboard}
                                 castShadow
                                 receiveShadow
@@ -798,7 +697,36 @@ const Scene = React.forwardRef((props, ref) => {
                                 scale={[1.1, 1, 1]}
                             />
                         </group>
-                        <Shelves />
+                        <group
+                            name='Box'
+                            position={[150.93, -129.49, 160.47]}
+                            rotation={[-Math.PI, 0, -Math.PI]}
+                            scale={[0.34, 0.26, 0.34]}
+                        >
+                            <mesh
+                                name='Cube 25'
+                                geometry={nodes["Cube 25"].geometry}
+                                material={materials.Cardboard}
+                                castShadow
+                                receiveShadow
+                                position={[0, 28.27, 0]}
+                                rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
+                                scale={[1.12, 1, 0.29]}
+                            />
+                            <mesh
+                                name='Cube8'
+                                geometry={nodes.Cube8.geometry}
+                                material={materials.Cardboard}
+                                castShadow
+                                receiveShadow
+                                position={[0.77, -4.34, -0.24]}
+                                rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
+                                scale={[1.1, 1, 1]}
+                            />
+                        </group>
+                        <Suspense>
+                            <Shelves />
+                        </Suspense>
                         <mesh
                             name='Ellipse'
                             geometry={nodes.Ellipse.geometry}
@@ -809,8 +737,12 @@ const Scene = React.forwardRef((props, ref) => {
                             rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
                             scale={1}
                         />
-                        <Floor />
-                        <Workspace ref={monitorRef} />
+                        <Suspense>
+                            <Floor />
+                        </Suspense>
+                        <Suspense>
+                            <Workspace ref={monitorRef} />
+                        </Suspense>
                     </group>
 
                     <hemisphereLight
