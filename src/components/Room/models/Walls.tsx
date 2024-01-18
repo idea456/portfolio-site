@@ -3,6 +3,7 @@ import { useAssets } from "./Scene";
 
 const Walls = () => {
   const { nodes, materials } = useAssets();
+
   return (
     <group
       name="Walls"
