@@ -24,6 +24,10 @@ export default function App() {
         });
     }, []);
 
+    const transitionToWorkspace = () => {
+        window.dispatchEvent(new Event("transition-to-workspace"));
+    };
+
     return (
         <Suspense fallback={<Loader />}>
             <div className='app'>
@@ -33,7 +37,10 @@ export default function App() {
                 </div>
 
                 {shouldShowScrollHint && (
-                    <div className='app__scroll-indicator'>
+                    <div
+                        className='app__scroll-indicator'
+                        onClick={transitionToWorkspace}
+                    >
                         <div className='app__scroll-indicator-wheel' />
                     </div>
                 )}
