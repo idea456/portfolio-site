@@ -33,6 +33,10 @@ export default function App() {
     window.dispatchEvent(new Event("transition-to-workspace"));
   };
 
+  if (window.location.pathname === "/test") {
+    return <h1>TEST</h1>
+  }
+
   return (
     <div className="app">
       {hasLoaded && (
