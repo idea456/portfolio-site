@@ -1,14 +1,11 @@
-import { Suspense, useEffect, useState } from "react";
-import { Loader } from "./components/Loader";
+import { useEffect, useState } from "react";
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
 import GmailIcon from "./assets/gmail.svg?react";
-import { lazy } from "@loadable/component";
 import { Room } from "./components/Room";
 import "./App.scss";
 
 export default function App() {
     const [shouldShowScrollHint, setShouldShowScrollHint] = useState(true);
-    const [hasLoaded, setHasLoaded] = useState(false);
 
     useEffect(() => {
         window.addEventListener("wheel", () => {
